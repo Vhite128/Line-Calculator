@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class test {
+public class Main {
 
     static char action;
     static String[] data;
