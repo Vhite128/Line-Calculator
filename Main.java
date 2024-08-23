@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
+public class test {
 
     static char action;
     static String[] data;
@@ -14,10 +14,13 @@ public class Main {
         takeOneDoTwo(in, action);
         String d1 = data[0];
         String d2 = data[1];
+        
+        if (action == '*' || action == '/') {
+            int d3 = Integer.parseInt(d2);
+            searchExeptionInt(d3);
+        }
 
-        searchExeptionInt(d2);
-        searchExeptionStrings(d1,d2);
-
+        searchExeptionStrings(d1, d2);
         calculateString(d1, d2, action);
     }
 
@@ -92,8 +95,8 @@ public class Main {
     }
 
     //Исключение по числу
-    public static void searchExeptionInt(String d2) {
-        int multiplier1 = Integer.parseInt(d2);
+    public static void searchExeptionInt(int d3) {
+        int multiplier1 = Integer.parseInt(String.valueOf(d3));
         if (multiplier1 < 1 || multiplier1 >10){
             try {
                 throw new IOException();
@@ -102,6 +105,7 @@ public class Main {
             }
             System.exit (1);
         }
+
     }
 
     //Исключение по строке
