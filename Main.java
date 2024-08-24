@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Main {
+public class test {
 
     static char action;
     static String[] data;
@@ -14,10 +14,16 @@ public class Main {
         takeOneDoTwo(in, action);
         String d1 = data[0];
         String d2 = data[1];
-        
+
         if (action == '*' || action == '/') {
             int d3 = Integer.parseInt(d2);
             searchExeptionInt(d3);
+        }
+
+        if (action == '+' || action == '-') {
+            int d4 = Integer.parseInt(d1);
+            if (d4 >= 1){throw new IOException();
+            }
         }
 
         searchExeptionStrings(d1, d2);
