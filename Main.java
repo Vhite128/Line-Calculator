@@ -1,7 +1,17 @@
 import java.io.IOException;
 import java.util.Scanner;
-
-public class test {
+/*
+"100" + "500"
+"Hi World!" - "World!"
+"Bye-bye!" - "World!"
+"Java" * 5
+"Java" * 11
+"qwertyuiop1" * 5
+"Example!!!" / 3
+"hi world" - "hi"
+3 + "hello"
+ */
+public class Main {
 
     static char action;
     static String[] data;
@@ -9,25 +19,29 @@ public class test {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
-        String in = input.replace("\"", "");
+        String in = input; // .replace("\"", "")
         action = searchSign(in);
         takeOneDoTwo(in, action);
         String d1 = data[0];
         String d2 = data[1];
-
-        if (action == '*' || action == '/') {
-            int d3 = Integer.parseInt(d2);
-            searchExeptionInt(d3);
-        }
-
-        if (action == '+' || action == '-') {
-            int d4 = Integer.parseInt(d1);
-            if (d4 >= 1){throw new IOException();
+        if (d1.contains("\"")) {
+            d1 = d1.replace("\"", "");
+            d2 = d2.replace("\"", "");
+            data[0] = d1; data[1] = d2;
+            if (action == '*' || action == '/') {
+                int d3 = Integer.parseInt(d2);
+                searchExeptionInt(d3);
+            }
+            searchExeptionStrings(d1, d2);
+            calculateString(action);
+        } else{
+            try {
+                throw new IOException();
+            } catch (Exception e) {
+                System.out.println("Первым аргументом выражения, подаваемого на вход, должна быть строка");
             }
         }
-
-        searchExeptionStrings(d1, d2);
-        calculateString(d1, d2, action);
+        System.exit (1);
     }
 
     //Поиск знака
@@ -61,7 +75,7 @@ public class test {
     }
 
     //Вычисление
-    public static void calculateString(String d1, String d2, char action) throws IOException {
+    public static void calculateString(char action) throws IOException {
         switch (action) {
             case '+':
                 printResult(data[0] + data[1]);
