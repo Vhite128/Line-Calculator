@@ -1,6 +1,7 @@
 import java.io.IOException;
 import java.util.Scanner;
 /*
+ПРОВЕРЕНО:
 "100" + "500"
 "Hi World!" - "World!"
 "Bye-bye!" - "World!"
@@ -10,6 +11,7 @@ import java.util.Scanner;
 "Example!!!" / 3
 "hi world" - "hi"
 3 + "hello"
+"i" - 5
  */
 public class Main {
 
@@ -24,6 +26,16 @@ public class Main {
         takeOneDoTwo(in, action);
         String d1 = data[0];
         String d2 = data[1];
+
+        int excep = 0;
+        if (d2.contains("\"")) {
+            excep = 1;
+        }
+        if (d1.contains("\"") && excep == 0 && (action == '+' || action == '-') ){
+            throw new IOException();
+        }
+
+
         if (d1.contains("\"")) {
             d1 = d1.replace("\"", "");
             d2 = d2.replace("\"", "");
